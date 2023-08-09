@@ -1,0 +1,8 @@
+.gameButton {
+  width: 50px;
+  height: 50px;
+}
+
+.gameBoard {
+  max-width: 300px;
+}

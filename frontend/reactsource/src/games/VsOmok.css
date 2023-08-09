@@ -1,0 +1,30 @@
+.omokBoard {
+  position: relative;
+  min-width: 842px;
+  min-height: 842px;
+  max-width: 842px;
+  max-height: 842px;
+  background-image: url("./../img/Go_board.png");
+  background-size: cover;
+}
+
+.stone {
+  position: absolute;
+  min-width: 42px;
+  min-height: 42px;
+  max-width: 42px;
+  max-height: 42px;
+  background-size: cover;
+}
+
+.whiteStone {
+  background-image: url("./../img/whitestone.png");
+}
+
+.blackStone {
+  background-image: url("./../img/blackstone.png");
+}
+
+.transparent {
+  opacity: 0.6;
+}
