@@ -6,6 +6,7 @@ function Main() {
     <>
       <NavigationBar />
       <Outlet />
+      <Footer />
     </>
   );
 }
@@ -14,7 +15,10 @@ function NavigationBar() {
   return (
     <Navbar expand="lg">
       <Container>
-        <Navbar.Brand href="/">PyRe</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img src="/img/just10min.png" alt="" />
+          10분만
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -31,6 +35,16 @@ function NavigationBar() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+  );
+}
+
+function Footer() {
+  return (
+    <>
+      <a href="https://www.flaticon.com/kr/free-icons/-" title="분할 된 원형 화살표 아이콘" target="_blank">
+        분할 된 원형 화살표 아이콘 제작자: Freepik - Flaticon
+      </a>
+    </>
   );
 }
 

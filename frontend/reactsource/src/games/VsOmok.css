@@ -4,7 +4,7 @@
   min-height: 842px;
   max-width: 842px;
   max-height: 842px;
-  background-image: url("./../img/Go_board.png");
+  background-image: url("./../../public/img/Go_board.png");
   background-size: cover;
 }
 
@@ -18,11 +18,11 @@
 }
 
 .whiteStone {
-  background-image: url("./../img/whitestone.png");
+  background-image: url("./../../public/img/whitestone.png");
 }
 
 .blackStone {
-  background-image: url("./../img/blackstone.png");
+  background-image: url("./../../public/img/blackstone.png");
 }
 
 .transparent {
