@@ -63,7 +63,6 @@ function VsOmok() {
       return;
     }
     if (row * cellSize + 3 !== mousePosition.x || col * cellSize + 3 !== mousePosition.y) {
-      console.log(mousePosition);
       setMousePosition({ x: row * cellSize + 3, y: col * cellSize + 3 });
     }
   }
@@ -193,7 +192,7 @@ const UserCard = ({ user }) => {
       <Card.Img variant="top" src="./logo192.png" />
       <Card.Body>
         <Card.Title>사용자 ID</Card.Title>
-        <Card.Text>한 수 부탁드립니다.</Card.Text>
+        <Card.Text>전적을 표기할까</Card.Text>
         <Button variant="primary">전적 보기</Button>
       </Card.Body>
     </Card>

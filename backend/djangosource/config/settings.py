@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "onetofifty",
     "users",
     'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -120,7 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -130,5 +130,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-CORS_ORIGIN_WHITELIST  =  ['http://127.0.0.1:3000','http://localhost:3000']
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
+]
+
 CORS_ALLOW_CREDENTIALS = True
+
+#OAuth
+
+##Kakao
+KAKAO_REST_API_KEY = "9034898ecea8c2e348f87364e863790c"
+KAKAO_REDIRECT_URI = "http://127.0.0.1:3000/oauth/kakao/callback"

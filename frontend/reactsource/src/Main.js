@@ -3,11 +3,11 @@ import { Outlet } from "react-router-dom";
 
 function Main() {
   return (
-    <>
+    <Container>
       <NavigationBar />
       <Outlet />
       <Footer />
-    </>
+    </Container>
   );
 }
 
@@ -22,12 +22,12 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/onetofifty">1to50</Nav.Link>
-            <Nav.Link href="/vsomok">온라인 오목</Nav.Link>
+            <Nav.Link href="/games/onetofifty">1to50</Nav.Link>
+            <Nav.Link href="/games/vsomok">온라인 오목</Nav.Link>
             <Nav.Link href="/">1인 오목</Nav.Link>
           </Nav>
-          <NavDropdown className="justify-content-end" title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">프로필 보기</NavDropdown.Item>
+          <NavDropdown className="justify-content-end" title="로그인" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/users/login">프로필 보기</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">회원 정보 변경</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.4">로그아웃</NavDropdown.Item>
