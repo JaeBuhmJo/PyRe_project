@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
 
 function Login() {

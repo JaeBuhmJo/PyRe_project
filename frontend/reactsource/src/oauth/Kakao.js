@@ -1,42 +1,49 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { useState } from "react";
 
-function Auth() {
-  const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
-  const kakaoRedirectURI = process.env.REACT_APP_KAKAO_REDIRECT_URI;
-  const CLIENT_SECRET = "[본인 CLIENT SECRET 값]";
-
-  // callback으로 받은 인가코드
+function Kakao() {
+  const [needRegister, setneedRegister] = useState(false);
+  // redirect로 받은 인가코드
   const code = new URL(window.location.href).searchParams.get("code");
 
-  function loginFail() {
+  function LoginFail() {
     alert("카카오 로그인 실패");
     window.location.href = "/users/login";
   }
 
   // 해당 code를 장고에 보내기
-  axios
-    .get("http://127.0.0.1:8000/oauth/kakao/callback/token?code=" + code)
-    .then((response) => {
-      if (response.status != 200) {
-        loginFail();
-      }
-      if (response.data === "Failed to get access token") {
-        loginFail();
-      }
-      console.log(response);
-    })
-    .catch((error) => {
-      alert(error);
-      loginFail();
-    });
+  function Authenticate() {
+    axios
+      .get("http://127.0.0.1:8000/oauth/kakao/token?code=" + code)
+      .then((response) => {
+        if (response.status !== 200) {
+          LoginFail();
+        }
+        if (response.data === "Failed to get access token") {
+          LoginFail();
+        }
+        if (response.data === "Register") {
+          // 회원가입 처리 필요
+          setneedRegister(true);
+        }
+        console.log(response);
+      })
+      .catch((error) => {
+        alert(error);
+        LoginFail();
+      });
+  }
+
+  function Process() {
+    return <div>{needRegister ? <h2>회원가입 페이지</h2> : <h1>로그인 요청 중입니다..</h1>}</div>;
+  }
 
   return (
     <>
-      <h1>Kakao REST API</h1>
+      <Process />
+      <Authenticate />
     </>
   );
 }
 
-export default Auth;
+export default Kakao;

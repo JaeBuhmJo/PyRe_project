@@ -23,7 +23,7 @@ function App() {
           ],
         },
         { path: "users", element: <Users />, children: [{ path: "login", element: <Login /> }] },
-        { path: "oauth", element: <OAuth />, children: [{ path: "kakao/callback", element: <Kakao /> }] },
+        { path: "oauth", element: <OAuth />, children: [{ path: "kakao", element: <Kakao /> }] },
       ],
     },
   ]);

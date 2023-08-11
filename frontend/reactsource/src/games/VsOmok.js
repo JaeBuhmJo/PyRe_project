@@ -89,7 +89,7 @@ function VsOmok() {
           const newRow = row + i * direction.y;
           const newCol = col + i * direction.x;
 
-          if (i == 0) {
+          if (i === 0) {
             line += "1";
             continue;
           }
@@ -153,7 +153,7 @@ function VsOmok() {
         {board.map((row, x) => (
           <div key={x}>
             {row.map((val, y) => {
-              if (val == 0) {
+              if (val !== 0) {
                 return;
               }
               return <div key={y} className={val === 1 ? "stone blackStone" : "stone whiteStone"} style={{ left: y * cellSize + 3, top: x * cellSize + 3 }} />;

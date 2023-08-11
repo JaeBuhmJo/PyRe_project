@@ -141,4 +141,4 @@ CORS_ALLOW_CREDENTIALS = True
 
 ##Kakao
 KAKAO_REST_API_KEY = "9034898ecea8c2e348f87364e863790c"
-KAKAO_REDIRECT_URI = "http://127.0.0.1:3000/oauth/kakao/callback"
+KAKAO_REDIRECT_URI = "http://127.0.0.1:3000/oauth/kakao"

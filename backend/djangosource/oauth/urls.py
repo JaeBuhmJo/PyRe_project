@@ -3,5 +3,5 @@ from .views import kakao_login
 app_name = "oauth"
 
 urlpatterns = [
-    path("kakao/callback/token", kakao_login, name="token"),
+    path("kakao/token", kakao_login, name="token"),
 ]
