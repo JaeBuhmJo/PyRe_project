@@ -1,7 +1,11 @@
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 
 function Main() {
+  function CheckRegistered() {
+    // 사용자의 정보를 불러와서 닉네임이 없으면 닉네임 등록 페이지로 이동.
+  }
+
   return (
     <Container>
       <NavigationBar />
@@ -16,8 +20,9 @@ function NavigationBar() {
     <Navbar expand="lg">
       <Container>
         <Navbar.Brand href="/">
-          <img src="/img/just10min.png" alt="" />
-          10분만
+          <b>안전한</b>
+          <img src="/img/safe_playground.png" alt="" />
+          <b>놀이터</b>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -26,12 +31,7 @@ function NavigationBar() {
             <Nav.Link href="/games/vsomok">온라인 오목</Nav.Link>
             <Nav.Link href="/">1인 오목</Nav.Link>
           </Nav>
-          <NavDropdown className="justify-content-end" title="로그인" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/users/login">프로필 보기</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">회원 정보 변경</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">로그아웃</NavDropdown.Item>
-          </NavDropdown>
+          <Nav.Link href="/users/login">로그인</Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
@@ -41,8 +41,8 @@ function NavigationBar() {
 function Footer() {
   return (
     <>
-      <a href="https://www.flaticon.com/kr/free-icons/-" title="분할 된 원형 화살표 아이콘" target="_blank">
-        분할 된 원형 화살표 아이콘 제작자: Freepik - Flaticon
+      <a href="https://www.flaticon.com/kr/free-icons/" title="방패 아이콘">
+        방패 아이콘 제작자: Smashicons - Flaticon
       </a>
     </>
   );

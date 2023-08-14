@@ -1,3 +1,4 @@
+
 """
 Django settings for djangosource project.
 
@@ -9,8 +10,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+from corsheaders.defaults import default_headers
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = "django-insecure-)@kbtjunj#*3%#cl&vr6=b=c=j+c-&c_)+zo991b)x@(+-_)v1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -38,9 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "onetofifty",
+    "api",
+    "sslserver",
     "users",
     'corsheaders',
     'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +121,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -130,15 +134,39 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-CORS_ORIGIN_WHITELIST = [
-    "http://127.0.0.1:3000",
-    "http://localhost:3000",
+#CORS with React frontend
+CORS_ALLOWED_ORIGINS = [
+    "https://127.0.0.1:3000",
+    "https://localhost:3000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-#OAuth
+CSRF_TRUSTED_ORIGINS = [
+    "https://127.0.0.1:3000",
+    "https://localhost:3000",
+]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+#OAuth
 ##Kakao
 KAKAO_REST_API_KEY = "9034898ecea8c2e348f87364e863790c"
-KAKAO_REDIRECT_URI = "http://127.0.0.1:3000/oauth/kakao"
+KAKAO_REDIRECT_URI = "https://127.0.0.1:3000/oauth/kakao"
+
+#JWT
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'ROTATE_REFRESH_TOKENS': True,
+    # 인증과정 비밀번호 제외를 위한 custom serializer
+    "TOKEN_OBTAIN_SERIALIZER": "api.serializers.CustomTokenObtainPairSerializer",
+}
+
+# JWT cookie csrf settings
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

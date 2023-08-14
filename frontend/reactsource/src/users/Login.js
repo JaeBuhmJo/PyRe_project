@@ -6,6 +6,7 @@ function Login() {
       <h1>Login</h1>
       <KakaoLogin />
       <GoogleLogin />
+      <span>미구현</span>
     </Container>
   );
 }

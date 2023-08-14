@@ -1,7 +1,7 @@
-from django.urls import path, reverse_lazy
-from .views import kakao_login
+from django.urls import path
+from . import views
 app_name = "oauth"
 
 urlpatterns = [
-    path("kakao/token", kakao_login, name="token"),
+    path("kakao/token", views.kakao_login, name="token"),
 ]
