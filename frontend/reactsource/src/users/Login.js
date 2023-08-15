@@ -2,11 +2,10 @@ import { Button, Container } from "react-bootstrap";
 
 function Login() {
   return (
-    <Container>
+    <Container className="sub-container">
       <h1>Login</h1>
       <KakaoLogin />
-      <GoogleLogin />
-      <span>미구현</span>
+      {/* <GoogleLogin /> */}
     </Container>
   );
 }

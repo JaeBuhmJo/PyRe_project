@@ -8,5 +8,5 @@ urlpatterns = [
     path("csrf/", include("csrf.urls")),
     path("vsomok/", include("vsomok.urls")),
     path("onetofifty/", include("onetofifty.urls")),
-    path("api/", include("api.urls")),
+    path("jwt/", include("jwttoken.urls")),
 ]

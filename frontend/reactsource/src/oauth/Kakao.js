@@ -1,34 +1,18 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "./../AuthContext";
+import RequestNickname from "./../Main";
 
 function Kakao() {
   // redirect로 받은 인가코드
   const code = new URL(window.location.href).searchParams.get("code");
+  const { setIsLoggedIn, setAccessToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   function LoginFail() {
     alert("카카오 로그인 실패");
     window.location.href = "/users/login";
-  }
-
-  function PostJWT(id) {
-    axios
-      .post(
-        "https://127.0.0.1:8000/api/token",
-        {
-          username: id,
-          password: "no",
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.error(error));
   }
 
   // 해당 code를 장고에 보내기
@@ -45,6 +29,7 @@ function Kakao() {
         return response;
       })
       .then((response) => {
+        setIsLoggedIn(true);
         PostJWT(response.data);
         navigate("/", { replace: true });
       })
@@ -52,6 +37,28 @@ function Kakao() {
         alert(error);
         LoginFail();
       });
+  }
+
+  function PostJWT(id) {
+    axios
+      .post(
+        "https://127.0.0.1:8000/jwt/token",
+        {
+          username: id,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          setAccessToken(true);
+          navigate("/", { replace: true });
+        }
+      })
+      .catch((error) => console.error(error));
   }
 
   return (

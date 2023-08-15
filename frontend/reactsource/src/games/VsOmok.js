@@ -141,7 +141,7 @@ function VsOmok() {
     setMousePosition({ x: -8000, y: -8000 });
     play();
     if (isVictory) {
-      alert("승리입니다. 축하드립니다.");
+      alert((isBlack ? "흑" : "백") + "의 승리입니다. 축하드립니다.");
       setBoard(getEmptyBoard());
       setisBlack(true);
     }
@@ -166,20 +166,20 @@ function VsOmok() {
 
   return (
     <>
-      <Container onContextMenu={preventContextMenu}>
+      <Container className="sub-container" onContextMenu={preventContextMenu}>
         <h3 className="mt-2">
           <b>온라인 오목</b>
         </h3>
-        <Stack direction="horizontal" gap={3}>
-          <div className="omokBoard mt-3" onClick={BoardClick} onMouseMove={BoardMouseMove}>
-            <Stones />
-            <div className={isBlack ? "stone blackStone transparent" : "stone whiteStone transparent"} style={{ left: mousePosition.y, top: mousePosition.x }} />
-          </div>
-          <div gap={3}>
+        {/* <Stack direction="horizontal" gap={3}> */}
+        <div className="omokBoard mt-3" onClick={BoardClick} onMouseMove={BoardMouseMove}>
+          <Stones />
+          <div className={isBlack ? "stone blackStone transparent" : "stone whiteStone transparent"} style={{ left: mousePosition.y, top: mousePosition.x }} />
+        </div>
+        {/* <div gap={3}>
             <UserCard user={user1} />
             <UserCard user={user2} />
           </div>
-        </Stack>
+        </Stack> */}
       </Container>
       <Footer />
     </>
@@ -201,7 +201,7 @@ const UserCard = ({ user }) => {
 
 const Footer = () => {
   return (
-    <div className="mt-5">
+    <footer className="footer">
       <p>
         바둑판 이미지 출처 :
         <span>
@@ -234,7 +234,7 @@ const Footer = () => {
           </a>
         </span>
       </p>
-    </div>
+    </footer>
   );
 };
 

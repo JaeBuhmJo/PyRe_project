@@ -1,9 +1,11 @@
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../AuthContext";
 
 function Register() {
-  //따로 axios로 빼야할듯
+  const { setNickname } = useContext(AuthContext);
   const navigate = useNavigate();
 
   function PostNickName(event) {
@@ -27,6 +29,7 @@ function Register() {
           return;
         }
         if (response.data === "Success") {
+          setNickname(nickname);
           navigate("/", { replace: true });
         }
       })

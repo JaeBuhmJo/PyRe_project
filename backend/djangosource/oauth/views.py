@@ -1,9 +1,9 @@
-from rest_framework_simplejwt.tokens import RefreshToken
+# from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.response import Response
+from dotenv import load_dotenv
 from users.models import CustomUser
 from django.conf import settings
-from dotenv import load_dotenv
 import os, json, requests
-from rest_framework.response import Response
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from users.views import register
