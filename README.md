@@ -15,6 +15,7 @@
      - 5분 유효기간의 Access Token과 30일 유효기간의 Refresh Token 발행
      - Refresh Token은 Httponly + Secure 쿠키로 발행하여 보안성 강화
      - 이를 위해 OpenSSL 인증서 발행하여 HTTPS 프로토콜 적용
+     - 로그아웃 시 해당 Refresh Token은 잔여 수명만큼 Redis에 블랙리스트로 저장, 갱신요청 거부
 
 
 - **웹게임 1pc 오목**
